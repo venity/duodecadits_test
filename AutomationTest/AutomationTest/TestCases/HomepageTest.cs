@@ -6,23 +6,46 @@ namespace AutomationTest.TestCases
 {
     public class HomepageTest
     {
-        Common commonPageObject;
+        IWebDriver driver;
+
         Navigator navigator;
 
-        public void start(IWebDriver driver)
+        Commonpage commonpage;
+        Homepage homepage;
+
+        public HomepageTest(IWebDriver driver)
         {
-            // Initialize
+            this.driver = driver;
             navigator = new Navigator(driver);
-            commonPageObject = new Common(driver);
+            commonpage = new Commonpage(driver);
+            homepage = new Homepage(driver);
+        }
 
+        public void RegressionTest()
+        {
             // I opened the http://uitest.duodecadits.com url.
-            navigator.IOpenedTheUITestingSite();
+            navigator.OpenedTheUITestingSite();
 
-            // the Home button should be activated
-            commonPageObject.HomeButton.Click();
+            // I click on the Home button.
+            commonpage.HomeButton.Click();
 
-            // I should get navigated to the Home page
-            Assert.AreEqual(commonPageObject.HomeButtonActive.Displayed, true);
+            // the Home button should be activated.
+            Assert.AreEqual(commonpage.HomeButtonActive.Displayed, true);
+        }
+
+        public void FunctionalTest()
+        {
+            // I opened the http://uitest.duodecadits.com url.
+            navigator.OpenedTheUITestingSite();
+
+            // I click on the Home button.
+            commonpage.HomeButton.Click();
+
+            // The welcome message should be the expected.
+            Assert.AreEqual(homepage.WelcomeMessage.Text, "Welcome to the Docler Holding QA Department");
+
+            // The description message should be the expected.
+            Assert.AreEqual(homepage.Description.Text, "This site is dedicated to perform some exercises and demonstrate automated web testing.");
         }
     }
 }

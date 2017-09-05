@@ -3,9 +3,15 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace AutomationTest.PageObjects
 {
-    class Common
+    class Commonpage
     {
         IWebDriver driver;
+
+        public Commonpage(IWebDriver driver)
+        {
+            this.driver = driver;
+            PageFactory.InitElements(driver, this);
+        }
 
         [FindsBy(How = How.Id, Using = "dh_logo")]
         public IWebElement Logo { get; set; }
@@ -24,11 +30,5 @@ namespace AutomationTest.PageObjects
 
         [FindsBy(How = How.Id, Using = "error")]
         public IWebElement ErrorButton { get; set; }
-
-        public Common(IWebDriver driver)
-        {
-            this.driver = driver;
-            PageFactory.InitElements(driver, this);
-        }
     }
 }

@@ -13,6 +13,12 @@ namespace AutomationTest.PageObjects
         [FindsBy(How = How.Id, Using = "home")]
         public IWebElement HomeButton { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = ".ui-test h1")]
+        public IWebElement WelcomeMessage { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".ui-test .lead")]
+        public IWebElement Description { get; set; }
+
         public Homepage(IWebDriver driver)
         {
             this.driver = driver;

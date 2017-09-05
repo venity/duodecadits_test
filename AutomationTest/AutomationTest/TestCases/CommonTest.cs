@@ -9,42 +9,42 @@ using System.Threading.Tasks;
 
 namespace AutomationTest.TestCases
 {
-    class SmokeTest
+    class CommonTest
     {
-        Common commonPageObject;
+        IWebDriver driver;
+
+        Commonpage commonpage;
         Navigator navigator;
 
-        public void start(IWebDriver driver)
+        public CommonTest(IWebDriver driver)
         {
-            // Initialize
+            this.driver = driver;
             navigator = new Navigator(driver);
-            commonPageObject = new Common(driver);
+            commonpage = new Commonpage(driver);
+        }
 
+        public void SmokeTest()
+        {
             // I opened the http://uitest.duodecadits.com url.
-            navigator.IOpenedTheUITestingSite();
+            navigator.OpenedTheUITestingSite();
 
             // When I click on the Homepage button
-            commonPageObject.HomeButton.Click();
+            commonpage.HomeButton.Click();
 
             // Then the title should be UI Testing Site
             Assert.AreEqual(driver.Title, "UI Testing Site");
             
             // And the company logo should be visible
-            Assert.AreEqual(commonPageObject.Logo.Displayed, true);
+            Assert.AreEqual(commonpage.Logo.Displayed, true);
 
             // When I click on the Form button
-            commonPageObject.FormButton.Click();
+            commonpage.FormButton.Click();
 
             // Then the title should be UI Testing Site
             Assert.AreEqual(driver.Title, "UI Testing Site");
 
             // And the company logo should be visible
-            Assert.AreEqual(commonPageObject.Logo.Displayed, true);
-        }
-
-        private void TheHomeButtonShouldBeActive()
-        {
-            Assert.AreEqual(commonPageObject.HomeButton.GetCssValue("class"), true);
+            Assert.AreEqual(commonpage.Logo.Displayed, true);
         }
     }
 }

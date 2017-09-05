@@ -59,7 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageObjects\Common.cs" />
+    <Compile Include="PageObjects\Commonpage.cs" />
+    <Compile Include="PageObjects\Errorpage.cs" />
     <Compile Include="PageObjects\Formpage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TestCaseHandler.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="TestCases\ErrorpageRegressionTest.cs" />
     <Compile Include="TestCases\FormpageTest.cs" />
     <Compile Include="TestCases\HomepageTest.cs" />
-    <Compile Include="TestCases\SmokeTest.cs" />
+    <Compile Include="TestCases\CommonTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

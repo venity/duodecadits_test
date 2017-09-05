@@ -8,7 +8,7 @@ namespace AutomationTest
 
         private IWebDriver driver;
 
-        public void IOpenedTheUITestingSite()
+        public void OpenedTheUITestingSite()
         {
             NavigateTo(UiTestSiteUrl);
         }

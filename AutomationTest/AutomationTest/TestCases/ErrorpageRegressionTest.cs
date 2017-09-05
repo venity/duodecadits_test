@@ -1,50 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutomationTest.PageObjects;
+﻿using AutomationTest.PageObjects;
+using NUnit.Framework;
 using OpenQA.Selenium;
-using RA;
-using static NUnit.Framework.StringAssert;
 
 namespace AutomationTest.TestCases
 {
     class ErrorpageRegressionTest
     {
-        Common commonPageObject;
+        IWebDriver driver;
+
         Navigator navigator;
 
-        public void startSeleniumTest(IWebDriver driver)
+        Commonpage commonpage;
+        Errorpage errorpage;
+
+        public ErrorpageRegressionTest(IWebDriver driver)
         {
-            // Initialize
+            this.driver = driver;
             navigator = new Navigator(driver);
-            commonPageObject = new Common(driver);
-
-            // I opened the http://uitest.duodecadits.com url.
-            navigator.IOpenedTheUITestingSite();
-
-            // the Home button should be activated
-            commonPageObject.ErrorButton.Click();
-
-            // I should get navigated to the Home page
-            Contains("404 Error: File not found", driver.Title);
+            commonpage = new Commonpage(driver);
+            errorpage = new Errorpage(driver);
         }
 
-        public void startRestAssuredTest(IWebDriver driver)
+        public void RegressionTest()
         {
-            // Initialize
-            navigator = new Navigator(driver);
-            commonPageObject = new Common(driver);
-
             // I opened the http://uitest.duodecadits.com url.
-            navigator.IOpenedTheUITestingSite();
+            navigator.OpenedTheUITestingSite();
 
-            // the Home button should be activated
-            commonPageObject.ErrorButton.Click();
+            // I click on the Error button
+            commonpage.ErrorButton.Click();
 
-            // I should get navigated to the Home page
-            Contains("404 Error: File not found", driver.Title);
+            // I should get an error message with 404 http response code
+            StringAssert.Contains("404 Error: File not found", driver.Title);
+            StringAssert.Contains("404 Error: File not found", errorpage.ErrorMessage.Text);
         }
     }
 }

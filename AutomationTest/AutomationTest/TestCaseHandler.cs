@@ -18,13 +18,35 @@ namespace AutomationTest
         }
 
         [Test]
-        public void TestApp()
+        public void CommonpageTestCase()
         {
-           // new SmokeTest().start(driver);
-           // new HomepageTest().start(driver);
-            // new FormpageTest().start(driver);
-            new ErrorpageRegressionTest().startRestAssuredTest(driver);
+            new CommonTest(driver).SmokeTest();
         }
+
+        [Test]
+        public void HomepageTestCase()
+        {
+            HomepageTest homepage = new HomepageTest(driver);
+            homepage.RegressionTest();
+            homepage.RegressionTest();
+        }
+
+        [Test]
+        public void FormpageTestCase()
+        {
+            FormpageTest formpage = new FormpageTest(driver);
+            formpage.RegressionTest();
+            formpage.FunctionalTest();
+        }
+
+        [Test]
+        public void ErrorpageTestCase()
+        {
+            ErrorpageRegressionTest errorpage = new ErrorpageRegressionTest(driver);
+            errorpage.RegressionTest();
+        }
+
+
 
         [TearDown]
         public void TestEnd()

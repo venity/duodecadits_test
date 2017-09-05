@@ -12,5 +12,11 @@ namespace AutomationTest.PageObjects
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
+
+        [FindsBy(How = How.Id, Using = "hello-input")]
+        public IWebElement InputField { get; set; }
+
+        [FindsBy(How = How.Id, Using = "hello-submit")]
+        public IWebElement SubmitButton { get; set; }
     }
 }
