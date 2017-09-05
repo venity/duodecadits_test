@@ -66,6 +66,9 @@
     <Compile Include="Navigator.cs" />
     <Compile Include="PageObjects\Homepage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCases\ErrorpageRegressionTest.cs" />
+    <Compile Include="TestCases\FormpageTest.cs" />
+    <Compile Include="TestCases\HomepageTest.cs" />
     <Compile Include="TestCases\SmokeTest.cs" />
   </ItemGroup>
   <ItemGroup>

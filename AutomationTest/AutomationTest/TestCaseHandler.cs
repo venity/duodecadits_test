@@ -20,7 +20,10 @@ namespace AutomationTest
         [Test]
         public void TestApp()
         {
-            new SmokeTest().start(driver);
+           // new SmokeTest().start(driver);
+           // new HomepageTest().start(driver);
+            // new FormpageTest().start(driver);
+            new ErrorpageRegressionTest().startRestAssuredTest(driver);
         }
 
         [TearDown]
