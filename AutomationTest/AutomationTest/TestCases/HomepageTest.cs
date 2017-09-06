@@ -11,17 +11,17 @@ namespace AutomationTest.TestCases
     {
         IWebDriver driver;
 
-        Navigator navigator;
+        readonly Navigator _navigator;
 
-        Commonpage commonpage;
-        Homepage homepage;
+        readonly Commonpage _commonpage;
+        readonly Homepage _homepage;
 
         public HomepageTest(IWebDriver driver)
         {
             this.driver = driver;
-            navigator = new Navigator(driver);
-            commonpage = new Commonpage(driver);
-            homepage = new Homepage(driver);
+            _navigator = new Navigator(driver);
+            _commonpage = new Commonpage(driver);
+            _homepage = new Homepage(driver);
         }
 
         /**
@@ -30,13 +30,13 @@ namespace AutomationTest.TestCases
         public void RegressionTest()
         {
             // Given I opened the http://uitest.duodecadits.com url.
-            navigator.OpenedTheUITestingSite();
+            _navigator.OpenedTheUITestingSite();
 
             // When I click on the Home button.
-            commonpage.HomeButton.Click();
+            _commonpage.HomeButton.Click();
 
             // Then the Home button should be activated.
-            Assert.AreEqual(commonpage.HomeButtonActive.Displayed, true);
+            Assert.AreEqual(_commonpage.HomeButtonActive.Displayed, true);
         }
 
         /**
@@ -45,16 +45,16 @@ namespace AutomationTest.TestCases
         public void FunctionalTest()
         {
             // Given I opened the http://uitest.duodecadits.com url.
-            navigator.OpenedTheUITestingSite();
+            _navigator.OpenedTheUITestingSite();
 
             // When I click on the Home button.
-            commonpage.HomeButton.Click();
+            _commonpage.HomeButton.Click();
 
             // Then the welcome message should be the expected.
-            Assert.AreEqual(homepage.WelcomeMessage.Text, "Welcome to the Docler Holding QA Department");
+            Assert.AreEqual(_homepage.WelcomeMessage.Text, "Welcome to the Docler Holding QA Department");
 
             // And the description message should be the expected.
-            Assert.AreEqual(homepage.Description.Text, "This site is dedicated to perform some exercises and demonstrate automated web testing.");
+            Assert.AreEqual(_homepage.Description.Text, "This site is dedicated to perform some exercises and demonstrate automated web testing.");
         }
     }
 }

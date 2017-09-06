@@ -12,19 +12,19 @@ namespace AutomationTest.TestCases
     {
         IWebDriver driver;
 
-        Navigator navigator;
+        readonly Navigator _navigator;
 
-        Commonpage commonpage;
-        Formpage formpage;
-        Homepage homepage;
+        readonly Commonpage _commonpage;
+        readonly Formpage _formpage;
+        readonly Homepage _homepage;
 
         public FormpageTest(IWebDriver driver)
         {
             this.driver = driver;
-            navigator = new Navigator(driver);
-            commonpage = new Commonpage(driver);
-            formpage = new Formpage(driver);
-            homepage = new Homepage(driver);
+            _navigator = new Navigator(driver);
+            _commonpage = new Commonpage(driver);
+            _formpage = new Formpage(driver);
+            _homepage = new Homepage(driver);
         }
 
         /**
@@ -33,13 +33,13 @@ namespace AutomationTest.TestCases
         public void RegressionTest()
         {
             // Given I opened the http://uitest.duodecadits.com url.
-            navigator.OpenedTheUITestingSite();
+            _navigator.OpenedTheUITestingSite();
 
             // When I click on the Form button
-            commonpage.FormButton.Click();
+            _commonpage.FormButton.Click();
 
             // Then the Form button should be activated
-            Assert.AreEqual(commonpage.FormButtonActive.Displayed, true);
+            Assert.AreEqual(_commonpage.FormButtonActive.Displayed, true);
         }
 
         /**
@@ -57,26 +57,26 @@ namespace AutomationTest.TestCases
             foreach (KeyValuePair<string, string> userData in usersData)
             {
                 // Given I opened the http://uitest.duodecadits.com url.
-                navigator.OpenedTheUITestingSite();
+                _navigator.OpenedTheUITestingSite();
 
                 // When I click on the Form button
-                commonpage.FormButton.Click();
+                _commonpage.FormButton.Click();
 
                 // Then the input field should be visible
-                Assert.AreEqual(formpage.InputField.Displayed, true);
+                Assert.AreEqual(_formpage.InputField.Displayed, true);
 
                 // And the submit field should be visible
-                Assert.AreEqual(formpage.SubmitButton.Displayed, true);
+                Assert.AreEqual(_formpage.SubmitButton.Displayed, true);
 
                 // When I type <Name> the input field
-                formpage.InputField.SendKeys(userData.Key);
+                _formpage.InputField.SendKeys(userData.Key);
 
                 // And I click on the submit button
-                formpage.SubmitButton.Click();
+                _formpage.SubmitButton.Click();
 
                 // Then he following text should appear and equal to <Expected Message>
-                Assert.AreEqual(homepage.WelcomeMessage.Displayed, true);
-                Assert.AreEqual(homepage.WelcomeMessage.Text, userData.Value);
+                Assert.AreEqual(_homepage.WelcomeMessage.Displayed, true);
+                Assert.AreEqual(_homepage.WelcomeMessage.Text, userData.Value);
             }
         }
     }
