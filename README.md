@@ -4,7 +4,7 @@ Automation test project for the given: http://uitest.duodecadits.com website.
 
 ## Getting Started
 
-First of all the automation tests work with the latest [chrome driver](https://chromedriver.storage.googleapis.com/2.32/chromedriver_win32.zip).
+First of all the automation tests work with the latest [chrome driver](https://chromedriver.storage.googleapis.com/2.31/chromedriver_win32.zip).
 The chrome driver must be on the **c:/** path.
 
 ## Running the tests
