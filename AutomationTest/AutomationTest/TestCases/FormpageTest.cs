@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace AutomationTest.TestCases
 {
+    /**
+     * Acceptance tests for form page.
+     */
     class FormpageTest
     {
         IWebDriver driver;
@@ -24,18 +27,24 @@ namespace AutomationTest.TestCases
             homepage = new Homepage(driver);
         }
 
+        /**
+         * Regression test for form page.
+         */
         public void RegressionTest()
         {
-            // I opened the http://uitest.duodecadits.com url.
+            // Given I opened the http://uitest.duodecadits.com url.
             navigator.OpenedTheUITestingSite();
 
-            // I click on the Form button
+            // When I click on the Form button
             commonpage.FormButton.Click();
 
-            // The Form button should be activated
+            // Then the Form button should be activated
             Assert.AreEqual(commonpage.FormButtonActive.Displayed, true);
         }
 
+        /**
+         * Functional test for form page.
+         */
         public void FunctionalTest()
         {
             // Test data
@@ -47,25 +56,26 @@ namespace AutomationTest.TestCases
 
             foreach (KeyValuePair<string, string> userData in usersData)
             {
-                // I opened the http://uitest.duodecadits.com url.
+                // Given I opened the http://uitest.duodecadits.com url.
                 navigator.OpenedTheUITestingSite();
 
-                // I click on the Form button
+                // When I click on the Form button
                 commonpage.FormButton.Click();
 
-                // The input field should be visible
+                // Then the input field should be visible
                 Assert.AreEqual(formpage.InputField.Displayed, true);
 
-                // The submit field should be visible
+                // And the submit field should be visible
                 Assert.AreEqual(formpage.SubmitButton.Displayed, true);
 
-                // I type <Name> the input field
+                // When I type <Name> the input field
                 formpage.InputField.SendKeys(userData.Key);
 
-                // I click on the submit button
+                // And I click on the submit button
                 formpage.SubmitButton.Click();
 
-                // The following text should appear and equal to <Expected Message>
+                // Then he following text should appear and equal to <Expected Message>
+                Assert.AreEqual(homepage.WelcomeMessage.Displayed, true);
                 Assert.AreEqual(homepage.WelcomeMessage.Text, userData.Value);
             }
         }

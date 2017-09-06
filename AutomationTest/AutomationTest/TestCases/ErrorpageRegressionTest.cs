@@ -4,34 +4,42 @@ using OpenQA.Selenium;
 
 namespace AutomationTest.TestCases
 {
+    /**
+     * Acceptance tests for error page.
+     */
     class ErrorpageRegressionTest
     {
-        IWebDriver driver;
+        readonly IWebDriver _driver;
 
-        Navigator navigator;
+        readonly Navigator _navigator;
 
-        Commonpage commonpage;
-        Errorpage errorpage;
+        readonly Commonpage _commonpage;
+        readonly Errorpage _errorpage;
 
         public ErrorpageRegressionTest(IWebDriver driver)
         {
-            this.driver = driver;
-            navigator = new Navigator(driver);
-            commonpage = new Commonpage(driver);
-            errorpage = new Errorpage(driver);
+            this._driver = driver;
+            _navigator = new Navigator(driver);
+            _commonpage = new Commonpage(driver);
+            _errorpage = new Errorpage(driver);
         }
 
+        /**
+         * Regression test for error page.
+         */
         public void RegressionTest()
         {
-            // I opened the http://uitest.duodecadits.com url.
-            navigator.OpenedTheUITestingSite();
+            // Given I opened the http://uitest.duodecadits.com url.
+            _navigator.OpenedTheUITestingSite();
 
-            // I click on the Error button
-            commonpage.ErrorButton.Click();
+            // When I click on the Error button.
+            _commonpage.ErrorButton.Click();
 
-            // I should get an error message with 404 http response code
-            StringAssert.Contains("404 Error: File not found", driver.Title);
-            StringAssert.Contains("404 Error: File not found", errorpage.ErrorMessage.Text);
+            // Then the title should be 404 http response code.
+            StringAssert.Contains("404 Error: File not found", _driver.Title);
+
+            // And the error message should be 404 http response code.
+            StringAssert.Contains("404 Error: File not found", _errorpage.ErrorMessage.Text);
         }
     }
 }

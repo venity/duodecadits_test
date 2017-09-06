@@ -3,9 +3,18 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace AutomationTest.PageObjects
 {
+    /**
+     * Page elements of the home page.
+     */
     class Homepage
     {
         IWebDriver driver;
+
+        public Homepage(IWebDriver driver)
+        {
+            this.driver = driver;
+            PageFactory.InitElements(driver, this);
+        }
 
         [FindsBy(How = How.Id, Using = "dh_logo")]
         public IWebElement Logo { get; set; }
@@ -18,11 +27,5 @@ namespace AutomationTest.PageObjects
 
         [FindsBy(How = How.CssSelector, Using = ".ui-test .lead")]
         public IWebElement Description { get; set; }
-
-        public Homepage(IWebDriver driver)
-        {
-            this.driver = driver;
-            PageFactory.InitElements(driver, this);
-        }
     }
 }

@@ -4,6 +4,9 @@ using OpenQA.Selenium;
 
 namespace AutomationTest.TestCases
 {
+    /**
+     * Acceptance tests for home page.
+     */
     public class HomepageTest
     {
         IWebDriver driver;
@@ -21,30 +24,36 @@ namespace AutomationTest.TestCases
             homepage = new Homepage(driver);
         }
 
+        /**
+         * Regression test for home page.
+         */
         public void RegressionTest()
         {
-            // I opened the http://uitest.duodecadits.com url.
+            // Given I opened the http://uitest.duodecadits.com url.
             navigator.OpenedTheUITestingSite();
 
-            // I click on the Home button.
+            // When I click on the Home button.
             commonpage.HomeButton.Click();
 
-            // the Home button should be activated.
+            // Then the Home button should be activated.
             Assert.AreEqual(commonpage.HomeButtonActive.Displayed, true);
         }
 
+        /**
+         * Functional test for home page.
+         */
         public void FunctionalTest()
         {
-            // I opened the http://uitest.duodecadits.com url.
+            // Given I opened the http://uitest.duodecadits.com url.
             navigator.OpenedTheUITestingSite();
 
-            // I click on the Home button.
+            // When I click on the Home button.
             commonpage.HomeButton.Click();
 
-            // The welcome message should be the expected.
+            // Then the welcome message should be the expected.
             Assert.AreEqual(homepage.WelcomeMessage.Text, "Welcome to the Docler Holding QA Department");
 
-            // The description message should be the expected.
+            // And the description message should be the expected.
             Assert.AreEqual(homepage.Description.Text, "This site is dedicated to perform some exercises and demonstrate automated web testing.");
         }
     }

@@ -3,6 +3,9 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace AutomationTest.PageObjects
 {
+    /**
+     * Page elements of the common page.
+     */
     class Commonpage
     {
         IWebDriver driver;

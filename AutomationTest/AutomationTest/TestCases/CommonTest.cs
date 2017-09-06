@@ -1,50 +1,51 @@
 ﻿using AutomationTest.PageObjects;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutomationTest.TestCases
 {
+    /**
+     * Acceptance tests for common pages.
+     */
     class CommonTest
     {
-        IWebDriver driver;
+        readonly IWebDriver _driver;
 
-        Commonpage commonpage;
-        Navigator navigator;
+        readonly Commonpage _commonpage;
+        readonly Navigator _navigator;
 
         public CommonTest(IWebDriver driver)
         {
-            this.driver = driver;
-            navigator = new Navigator(driver);
-            commonpage = new Commonpage(driver);
+            this._driver = driver;
+            _navigator = new Navigator(driver);
+            _commonpage = new Commonpage(driver);
         }
 
+        /**
+         * Smoke test for common pages.
+         */
         public void SmokeTest()
         {
-            // I opened the http://uitest.duodecadits.com url.
-            navigator.OpenedTheUITestingSite();
+            // Given I opened the http://uitest.duodecadits.com url.
+            _navigator.OpenedTheUITestingSite();
 
-            // When I click on the Homepage button
-            commonpage.HomeButton.Click();
+            // When I click on the Homepage button.
+            _commonpage.HomeButton.Click();
 
-            // Then the title should be UI Testing Site
-            Assert.AreEqual(driver.Title, "UI Testing Site");
+            // Then the title should be UI Testing Site.
+            Assert.AreEqual(_driver.Title, "UI Testing Site");
             
-            // And the company logo should be visible
-            Assert.AreEqual(commonpage.Logo.Displayed, true);
+            // And the company logo should be visible.
+            Assert.AreEqual(_commonpage.Logo.Displayed, true);
 
-            // When I click on the Form button
-            commonpage.FormButton.Click();
+            // When I click on the Form button.
+            _commonpage.FormButton.Click();
 
-            // Then the title should be UI Testing Site
-            Assert.AreEqual(driver.Title, "UI Testing Site");
+            // Then the title should be UI Testing Site.
+            Assert.AreEqual(_driver.Title, "UI Testing Site");
 
-            // And the company logo should be visible
-            Assert.AreEqual(commonpage.Logo.Displayed, true);
+            // And the company logo should be visible.
+            Assert.AreEqual(_commonpage.Logo.Displayed, true);
         }
     }
 }
