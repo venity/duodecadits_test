@@ -5,6 +5,9 @@ using OpenQA.Selenium.Chrome;
 
 namespace AutomationTest
 {
+    /**
+     * Controller for the test cases.
+     */
     class TestCaseController
     {
         IWebDriver driver;
@@ -43,7 +46,6 @@ namespace AutomationTest
             ErrorpageRegressionTest errorpage = new ErrorpageRegressionTest(driver);
             errorpage.RegressionTest();
         }
-
 
 
         [TearDown]
