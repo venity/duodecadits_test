@@ -63,7 +63,7 @@
     <Compile Include="PageObjects\Errorpage.cs" />
     <Compile Include="PageObjects\Formpage.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="TestCaseHandler.cs" />
+    <Compile Include="TestCaseController.cs" />
     <Compile Include="Navigator.cs" />
     <Compile Include="PageObjects\Homepage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
