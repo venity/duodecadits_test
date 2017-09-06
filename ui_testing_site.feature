@@ -14,19 +14,18 @@ Feature: Regression tests for UI Testing Site
 	Scenario: Regression test for Home page
 		Given I opened the http://uitest.duodecadits.com url
 		When I click on the Home button
-		Then I should get navigated to the Home page
-		And the Home button should be activated
+		Then the Home button should be activated
 
 	Scenario: Regression test for Form page
 		Given I opened the http://uitest.duodecadits.com url
 		When I click on the Form button
-		Then I should get navigated to the Form page
-		And the Form button should be activated
+		Then the Form button should be activated
 
 	Scenario: Regression test for Error page
 		Given I opened the http://uitest.duodecadits.com url
 		When I click on the Error button
-		Then I should get an error message with 404 http response code
+		Then the title should be 404 http response code.
+		And the error message should be 404 http response code
 
 	Scenario Outline: Functional test for Home page
 		Given I opened the http://uitest.duodecadits.com url
@@ -40,10 +39,8 @@ Feature: Regression tests for UI Testing Site
 	Scenario Outline: Functional test for Form page 
 		Given I opened the http://uitest.duodecadits.com url
 		When I click on the Form button
-		Then I should get navigated to the Form page
-		And the input field should be visible
+		Then the input field should be visible
 		And the submit should be visible
-
 		When I type <Value> the input field
 		And I click on the submit button
 		Then The home page should be visible
